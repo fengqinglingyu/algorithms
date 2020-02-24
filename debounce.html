@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./debounce.js"></script>
+    <style>
+      #area {
+        background-color: orange;
+        width: 500px;
+        height: 400px;
+        position: absolute;
+        /*top: 50%;
+        left: 50%;
+        margin-left: -250px;
+        margin-top: -200px;*/
+        transform: translateY(50%);
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="test" />
+    <div id="area"></div>
+  </body>
+  <script>
+    const input = document.querySelector('#test')
+    input.addEventListener(
+      'keyup',
+      debounce(function(e) {
+        console.log(e.target.value)
+      }, 500),
+      false
+    )
+    const div = document.querySelector('#area')
+    // div.addEventListener(
+    //   'mousemove',
+    //   throttle(function(e) {
+    //     console.log(e.target)
+    //   }, 500),
+    //   false
+    // )
+  </script>
+</html>

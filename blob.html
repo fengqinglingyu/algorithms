@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="#" id="test">Test</a>
+  </body>
+  <script>
+    const text = `
+    import React, { Component } from 'react';
+    import { Button } from 'antd';
+    import { connect } from 'dva';
+
+    @connect(({ download, loading }) => ({
+      download,
+      loading: loading.effects['download/download'],
+    }))
+    class ExampleDownloadPage extends Component {
+        handleDownloadClick = e => {
+            e.preventDefault();
+            const { dispatch } = this.props;
+            const fileName = 'demo.xlsx';
+            
+            dispatch({
+                type: 'download/download',
+                payload: {}, // 根据实际情况填写参数
+                callback: blob => {
+                    if (window.navigator.msSaveOrOpenBlob) {
+                        navigator.msSaveBlob(blob, fileName);
+                    } else {
+                        const link = document.createElement('a');
+                        const evt = document.createEvent('MouseEvents');
+                        link.style.display = 'none';
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = fileName;
+                        document.body.appendChild(link); // 此写法兼容可火狐浏览器
+                        evt.initEvent('click', false, false);
+                        link.dispatchEvent(evt);
+                        document.body.removeChild(link);
+                    }
+                }
+            });
+        }
+        
+        render(){
+            const { loading } = this.props;
+            
+            return <Button 
+                      loading={loading} 
+                      icon="download" 
+                      onClick={this.handleDownloadClick}
+                  >
+                    下载
+                  </Button>;
+        }
+    }
+    `;
+    const btn = document.querySelector("#test");
+
+    const blob = new Blob([text]);
+    const url = URL.createObjectURL(blob);
+    btn.href = url;
+    btn.download = "123.txt";
+  </script>
+</html>

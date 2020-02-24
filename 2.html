@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>2.html</div>
+    <ul>
+      <li><a href="1.html">To 1.html</a></li>
+      <li><a href="#" id="newTab">To 1.html New Tab</a></li>
+      <li><a href="#" id="newWindow">To 1.html New Window</a></li>
+    </ul>
+  </body>
+  <script>
+    const newTab = document.querySelector('#newTab')
+    const newWindow = document.querySelector('#newWindow')
+    newTab.addEventListener(
+      'click',
+      e => {
+        e.preventDefault()
+        window.open('1.html')
+      },
+      false
+    )
+    newWindow.addEventListener(
+      'click',
+      e => {
+        e.preventDefault()
+        window.open(
+          '1.html',
+          '_blank',
+          'height=400, width=600, toolbar=yes, menubar=yes, '
+        )
+      },
+      false
+    )
+  </script>
+</html>

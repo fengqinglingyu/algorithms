@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      #box1 {
+        width: 500px;
+        height: 400px;
+        position: relative;
+        float: left;
+      }
+
+      #box1 .item {
+        position: absolute;
+        bottom: 0;
+        width: 40px;
+      }
+
+      #box1 .item1 {
+        left: 0;
+      }
+      #box1 .item2 {
+        left: 60px;
+      }
+      #box1 .item3 {
+        left: 120px;
+      }
+      #box1 .item4 {
+        left: 180px;
+      }
+      #box1 .item5 {
+        left: 240px;
+      }
+
+      #box2 {
+        float: left;
+        width: 500px;
+        height: 400px;
+        display: flex;
+      }
+
+      #box2 .item {
+        display: flex;
+        width: 40px;
+        align-items: flex-end;
+      }
+
+      #box3 {
+        background-color: #555;
+        /*border: 50px solid #000000;*/
+        /*border-right: 50px solid transparent;
+        border-left: 50px solid transparent;*/
+        border-bottom: 100px solid black;
+
+        border-top: none;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <div class="item item1" style="background-color: #f00;height: 30%;"></div>
+      <div class="item item2" style="background-color: #ddd;height: 80%;"></div>
+      <div class="item item3" style="background-color: #0fd;height: 70%;"></div>
+      <div class="item item4" style="background-color: #ff0;height: 60%;"></div>
+      <div class="item item5" style="background-color: #234;height: 90%;"></div>
+    </div>
+    <div id="box2">
+      <div class="item item1" style="background-color: #f00;height: 30%;"></div>
+      <div class="item item2" style="background-color: #ddd;height: 80%;"></div>
+      <div class="item item3" style="background-color: #0fd;height: 70%;"></div>
+      <div class="item item4" style="background-color: #ff0;height: 60%;"></div>
+      <div class="item item5" style="background-color: #234;height: 90%;"></div>
+    </div>
+    <div id="box3"></div>
+  </body>
+</html>

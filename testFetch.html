@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">Test</button>
+  </body>
+  <script>
+    const btn = document.querySelector('#btn')
+
+    async function fetchData() {
+      const res = await fetch(
+        'https://10.100.133.83:81/FOPApi/api/common/credit-cards/GZ103ff45249-934b-409a-af25-b14f216e01b10000005308/current-card',
+        {
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json',
+            'User-Code': 'Test',
+            Signature: '123abc'
+          }
+        }
+      ).then(res => res.json())
+      console.log(res)
+    }
+
+    btn.addEventListener('click', fetchData, false)
+  </script>
+</html>

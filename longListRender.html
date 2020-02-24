@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script>
+      // 不兼容 performance.timing 的浏览器
+      window.pageStartTime = Date.now();
+    </script>
+  </head>
+  <body>
+    <ul id="main"></ul>
+  </body>
+  <script>
+    console.log(Date.now() - performance.timing.navigationStart);
+    const container = document.querySelector("#main");
+    const count = 10000;
+    const start = Date.now();
+    const once = 20;
+    function loop(count, start) {
+      const pageCount = Math.min(count, once);
+      requestAnimationFrame(() => {
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < pageCount; i++) {
+          const li = document.createElement("li");
+          const liInfo = `${start + i}: ${(Math.random() * 100000) >> 0}`;
+          li.innerHTML = liInfo;
+          fragment.appendChild(li);
+        }
+        container.appendChild(fragment);
+        loop(count - pageCount, start + pageCount);
+      }, 0);
+    }
+    loop(count, 0);
+  </script>
+</html>
